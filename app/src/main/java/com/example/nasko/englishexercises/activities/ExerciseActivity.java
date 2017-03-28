@@ -1,11 +1,18 @@
 package com.example.nasko.englishexercises.activities;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nasko.englishexercises.R;
 import com.example.nasko.englishexercises.entries.EntryList;
@@ -28,6 +35,8 @@ public class ExerciseActivity extends Activity {
     ArrayList<MyEntity> wrongWords;
     ArrayList<MyEntity> list;
     ArrayList<MyEntity> currentWords;
+    SharedPreferences prefs;
+    String imgSett;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +46,16 @@ public class ExerciseActivity extends Activity {
         wrongWords = new ArrayList<>();
         currentWords = new ArrayList<>();
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String intrSett = prefs.getString("introduced_times", "10");
+        int introducedТimes = Integer.valueOf(intrSett);
+
         EntryList entryList = new EntryList();
-        entryList.readDb(getApplication(), 10);
+        entryList.readDb(getApplication(), introducedТimes);
         list = entryList.getList();
 
 
         counter = list.size() -1;
-
-
-
-
 
         textViewType = (TextView) findViewById(R.id.textViewType);
         textViewResult = (TextView) findViewById(R.id.textViewResult);
@@ -54,22 +63,34 @@ public class ExerciseActivity extends Activity {
         editTextBulgarian = (EditText) findViewById(R.id.editTextBulgarian);
         buttonNext = (Button) findViewById(R.id.nextBtn);
 
-        textViewType.setText(list.get(counter).getType());
-        textViewEnglish.setText(list.get(counter).getBgWord());
+        if (counter > 0) {
+            textViewType.setText(list.get(counter).getType());
+            textViewEnglish.setText(list.get(counter).getBgWord());
 
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String entredWord = String.valueOf(editTextBulgarian.getText());
-                if (!(entredWord.equals(list.get(counter).getEngWord()))){
-                    wrongWords.add(list.get(counter));
-                }else {
-                    currentWords.add(list.get(counter));
+            buttonNext.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    String entredWord = String.valueOf(editTextBulgarian.getText());
+                    if (!(entredWord.equals(list.get(counter).getEngWord()))) {
+                        wrongWords.add(list.get(counter));
+                    } else {
+                        currentWords.add(list.get(counter));
+                    }
+
+                    next();
+                    editTextBulgarian.setText(null);
                 }
+            });
 
-                next();
-                editTextBulgarian.setText(null);
-            }
-        });
+            //test
+        }else {
+            Context context = getApplicationContext();
+            CharSequence text = "no words for learn";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            onBackPressed();
+        }
 
 
     }

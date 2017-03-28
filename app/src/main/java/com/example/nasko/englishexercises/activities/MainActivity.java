@@ -1,6 +1,7 @@
 package com.example.nasko.englishexercises.activities;
 
 import android.content.Intent;
+import android.preference.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(this, ExerciseActivity.class);
                 startActivity(intent3);
                 return true;
+            case R.id.settings:
+                Intent intent4 = new Intent(this, PreferenceActivity.class);
+                startActivity(intent4);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

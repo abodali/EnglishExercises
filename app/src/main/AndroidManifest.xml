@@ -16,28 +16,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.NewWordsActivity"
+            android:parentActivityName=".activities.MainActivity">
 
-        <activity android:name=".activities.NewWordsActivity"
-            android:parentActivityName=".activities.MainActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.dataVisualizationActivity"
-            android:parentActivityName=".activities.MainActivity" >
+        <activity
+            android:name=".activities.dataVisualizationActivity"
+            android:parentActivityName=".activities.MainActivity">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.ExerciseActivity"
-            android:parentActivityName=".activities.MainActivity" >
+        <activity
+            android:name=".activities.ExerciseActivity"
+            android:parentActivityName=".activities.MainActivity">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.nasko.englishexercises.activities.MainActivity" />
+        </activity>
+        <activity android:name=".activities.PreferenceActivity" />
     </application>
 
 </manifest>

@@ -100,7 +100,7 @@ public class EntryList extends ArrayList {
         FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(context);
         SQLiteDatabase db1 = mDbHelper.getReadableDatabase();
 
-        Cursor cursor = db1.rawQuery(String.format("SELECT * FROM %s WHERE %s > %d",
+        Cursor cursor = db1.rawQuery(String.format("SELECT * FROM %s WHERE %s < %d",
                 FeedReaderContract.FeedEntry.TABLE_NAME,
                 FeedReaderContract.FeedEntry.TRUE_INTRODUCTED_TIMES,
                 IntroducedТimes), null);

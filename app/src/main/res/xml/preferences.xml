@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:inputType="number"
+        android:key="introduced_times"
+        android:title="@string/pref_title_introduced_times"
+        android:defaultValue="@string/pref_default_introduced_imes"
+        />
+</PreferenceScreen>

@@ -3,4 +3,9 @@
     <string name="addEntries">Add entries</string>
     <string name="showDatabase">Show database</string>
     <string name="doExercises">Do Exercises</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_title_introduced_times">introduced times</string>
+    <string name="pref_default_introduced_imes">10</string>
+
 </resources>
