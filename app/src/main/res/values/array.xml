@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerItems">
+        <item>verb</item>
+        <item>adjective</item>
+        <item>noun</item>
+        <item>phrase</item>
+    </string-array>
+</resources>
