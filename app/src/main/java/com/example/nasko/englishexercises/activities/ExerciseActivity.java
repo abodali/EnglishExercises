@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.nasko.englishexercises.R;
 import com.example.nasko.englishexercises.entries.EntryList;
 import com.example.nasko.englishexercises.entries.MyEntity;
+import com.example.nasko.englishexercises.entries.UpdateTrueIntroductedTimes;
 
 import java.util.ArrayList;
 
@@ -24,8 +25,9 @@ public class ExerciseActivity extends Activity {
     Button buttonNext;
     EditText editTextBulgarian;
     int counter;
-    ArrayList<String> wrongWords;
+    ArrayList<MyEntity> wrongWords;
     ArrayList<MyEntity> list;
+    ArrayList<MyEntity> currentWords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +35,10 @@ public class ExerciseActivity extends Activity {
         setContentView(R.layout.activity_exercise);
 
         wrongWords = new ArrayList<>();
+        currentWords = new ArrayList<>();
 
         EntryList entryList = new EntryList();
-        entryList.fillTheList(getApplication());
+        entryList.readDb(getApplication(), 10);
         list = entryList.getList();
 
 
@@ -58,7 +61,9 @@ public class ExerciseActivity extends Activity {
             public void onClick(View v) {
                 String entredWord = String.valueOf(editTextBulgarian.getText());
                 if (!(entredWord.equals(list.get(counter).getEngWord()))){
-                    wrongWords.add(list.get(counter).getEngWord());
+                    wrongWords.add(list.get(counter));
+                }else {
+                    currentWords.add(list.get(counter));
                 }
 
                 next();
@@ -89,7 +94,7 @@ public class ExerciseActivity extends Activity {
             result += "wrong answers: " + wrongWords.size() + "\n";
             result += "incorrect words: \n";
             for (int i = 0; i < wrongWords.size(); i++) {
-                result += wrongWords.get(i) + "\n";
+                result += wrongWords.get(i).getEngWord() + "\n";
             }
         }
         textViewResult.setText(result);
@@ -99,6 +104,14 @@ public class ExerciseActivity extends Activity {
         editTextBulgarian.setVisibility(View.GONE);
         textViewType.setVisibility(View.GONE);
         textViewEnglish.setVisibility(View.GONE);
+
+        if (wrongWords.size() > 0){
+            UpdateTrueIntroductedTimes.wrongWords(wrongWords, getApplication());
+        }
+
+        if (currentWords.size() > 0){
+            UpdateTrueIntroductedTimes.currentWords(currentWords, getApplication());
+        }
 
         printResult();
 

@@ -12,7 +12,7 @@ public class MyEntity {
     private String type;
     private String engWord;
     private String bgWord;
-    private String isLearned;
+    private int isLearned;
     private int trueIntroducedТimes;
 
     public MyEntity(int id, String type, String engWord, String bgWord) {
@@ -20,6 +20,15 @@ public class MyEntity {
         this.type = type;
         this.engWord = engWord;
         this.bgWord = bgWord;
+    }
+
+    public MyEntity(int id, String type, String engWord, String bgWord, int isLearned, int trueIntroducedТimes) {
+        this.id = id;
+        this.type = type;
+        this.engWord = engWord;
+        this.bgWord = bgWord;
+        this.isLearned = isLearned;
+        this.trueIntroducedТimes = trueIntroducedТimes;
     }
 
     public int getId() {
@@ -54,11 +63,11 @@ public class MyEntity {
         this.bgWord = bgWord;
     }
 
-    public String getIsLearned() {
+    public int getIsLearned() {
         return isLearned;
     }
 
-    public void setIsLearned(String isLearned) {
+    public void setIsLearned(int isLearned) {
         this.isLearned = isLearned;
     }
 
@@ -72,6 +81,6 @@ public class MyEntity {
 
     @Override
     public String toString(){
-        return "ID: " + getId() + ", " + getType() + ", " + getEngWord() +", " + getBgWord();
+        return "ID: " + getId() + ", " + getType() + ", " + getEngWord() + ", " + getBgWord() + ", " + getIsLearned() + ", " + getTrueIntroducedТimes();
     }
 }

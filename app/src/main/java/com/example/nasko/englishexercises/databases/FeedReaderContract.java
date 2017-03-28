@@ -23,7 +23,9 @@ public final class FeedReaderContract {
                     FeedEntry._ID + " INTEGER PRIMARY KEY," +
                     FeedEntry.COLUMN_NAME_TYPE + " TEXT," +
                     FeedEntry.COLUMN_NAME_ENGLISH + " TEXT," +
-                    FeedEntry.COLUMN_NAME_BULGARIAN + " TEXT)";
+                    FeedEntry.COLUMN_NAME_BULGARIAN + " TEXT," +
+                    FeedEntry.IS_LEARNED + " INTEGER DEFAULT 0," +
+                    FeedEntry.TRUE_INTRODUCTED_TIMES + " INTEGER DEFAULT 0)";
 
     protected static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedEntry.TABLE_NAME;
