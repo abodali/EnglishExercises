@@ -1,13 +1,16 @@
 package com.example.nasko.englishexercises.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nasko.englishexercises.databases.FeedReaderContract;
 import com.example.nasko.englishexercises.databases.FeedReaderDbHelper;
@@ -28,7 +31,9 @@ public class dataVisualizationActivity extends Activity {
     Button deletFromDbBtn;
     TextView allDbToText;
     TextView showEntityTextView;
+    LinearLayout layout;
     MyEntity  entity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,8 @@ public class dataVisualizationActivity extends Activity {
         selectBtn = (Button) findViewById(R.id.selectBtn);
         showEntityTextView = (TextView) findViewById(R.id.showEntityTextView);
         deletFromDbBtn = (Button) findViewById(R.id.deletFromDbBtn);
-
+        layout = (LinearLayout) findViewById(R.id.SelectLinearLayout);
+        layout.setVisibility(View.GONE);
         String s = "";
         final ArrayList<MyEntity> list = EntryList.getAllDB(getApplication());
 
@@ -53,15 +59,38 @@ public class dataVisualizationActivity extends Activity {
 
         selectBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (IDEditText.getText() != null && !IDEditText.equals("")){
-                    selectedID = Integer.valueOf(String.valueOf(IDEditText.getText()));
+                int ir = 10;
+                String input = IDEditText.getText().toString();
+                if (!input.matches("")){
+                    selectedID = Integer.valueOf(input);
                     for (MyEntity myEntity : list) {
                         if (myEntity.getId() == selectedID){
                             entity = myEntity;
+                            String str = entity.toString();
+                            showEntityTextView.setText(str);
+                            layout.setVisibility(View.VISIBLE);
                         }
                     }
-                    String str = entity.getId() + " " + entity.getEngWord() + " " + entity.getBgWord();
-                    showEntityTextView.setText(str);
+
+                    if (entity == null){
+                        Context context = getApplicationContext();
+                        CharSequence text = "Nonexistent ID";
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        finish();
+                        startActivity(getIntent());
+                    }
+
+                }else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please input ID";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
                 }
             }
         });
