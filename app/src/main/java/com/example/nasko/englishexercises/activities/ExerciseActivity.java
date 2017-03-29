@@ -2,12 +2,9 @@ package com.example.nasko.englishexercises.activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nasko.englishexercises.R;
-import com.example.nasko.englishexercises.entries.EntryList;
+import com.example.nasko.englishexercises.entries.EntryListOld;
 import com.example.nasko.englishexercises.entries.MyEntity;
 import com.example.nasko.englishexercises.entries.UpdateTrueIntroductedTimes;
 
@@ -26,17 +23,16 @@ import java.util.ArrayList;
  */
 
 public class ExerciseActivity extends Activity {
+    int counter;
     TextView textViewEnglish;
     TextView textViewResult;
     TextView textViewType;
     Button buttonNext;
     EditText editTextBulgarian;
-    int counter;
     ArrayList<MyEntity> wrongWords;
     ArrayList<MyEntity> list;
     ArrayList<MyEntity> currentWords;
     SharedPreferences prefs;
-    String imgSett;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +46,9 @@ public class ExerciseActivity extends Activity {
         String intrSett = prefs.getString("introduced_times", "10");
         int introducedТimes = Integer.valueOf(intrSett);
 
-        EntryList entryList = new EntryList();
-        entryList.readDb(getApplication(), introducedТimes);
-        list = entryList.getList();
+        EntryListOld entryListOld = new EntryListOld();
+        entryListOld.readDb(getApplication(), introducedТimes);
+        list = entryListOld.getList();
 
 
         counter = list.size() -1;
@@ -84,7 +80,7 @@ public class ExerciseActivity extends Activity {
             //test
         }else {
             Context context = getApplicationContext();
-            CharSequence text = "no words for learn";
+            CharSequence text = "no words to learn";
             int duration = Toast.LENGTH_LONG;
 
             Toast toast = Toast.makeText(context, text, duration);

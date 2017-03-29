@@ -2,15 +2,11 @@ package com.example.nasko.englishexercises.entries;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.nasko.englishexercises.databases.FeedReaderContract;
 import com.example.nasko.englishexercises.databases.FeedReaderDbHelper;
 
 import java.util.List;
 
-/**
- * Created by nasko on 28.3.2017 г..
- */
 
 public class UpdateTrueIntroductedTimes {
 
