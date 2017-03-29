@@ -37,6 +37,11 @@ public class PreExersciseActivity extends AppCompatActivity {
                 int dbSize = list.size();
                 Bundle bundle = new Bundle();
                 if (!count.matches("")){
+                    bundle.putInt("count", Integer.valueOf(count));
+                    bundle.putString("type", type);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }else {
                     bundle.putInt("count", dbSize);
                     bundle.putString("type", type);
                     intent.putExtras(bundle);

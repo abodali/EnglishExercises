@@ -80,8 +80,9 @@ public class ExerciseActivity extends Activity {
         textViewEnglish = (TextView) findViewById(R.id.textViewEnglish);
         editTextBulgarian = (EditText) findViewById(R.id.editTextBulgarian);
         buttonNext = (Button) findViewById(R.id.nextBtn);
+        buttonNext.setText("next");
 
-        if (counter > 0) {
+        if (counter >= 0) {
             textViewType.setText(list.get(counter).getType());
             textViewEnglish.setText(list.get(counter).getBgWord());
 

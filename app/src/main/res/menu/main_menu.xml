@@ -6,9 +6,9 @@
     <item android:id="@+id/see"
         android:title="@string/showDatabase" >
     </item>
-    <item android:id="@+id/exercises"
-        android:title="@string/doExercises" >
-    </item>
+    <!--<item android:id="@+id/exercises"-->
+        <!--android:title="@string/doExercises" >-->
+    <!--</item>-->
     <item android:id="@+id/settings"
         android:title="@string/title_activity_settings" >
     </item>
