@@ -99,7 +99,8 @@ public class EntryListOld extends ArrayList {
     }
 
 
-    public void readDb(Context context, int IntroducedТimes){
+    public ArrayList<MyEntity> readDb(Context context, int IntroducedТimes){
+        ArrayList<MyEntity> list = new ArrayList<>();
         FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(context);
         SQLiteDatabase db1 = mDbHelper.getReadableDatabase();
 
@@ -118,9 +119,37 @@ public class EntryListOld extends ArrayList {
             int is_learned = cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.IS_LEARNED));
             int trueIntroducedТimes = cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.TRUE_INTRODUCTED_TIMES));
 
-            this.list.add(new MyEntity(itemId, type, englishWord, bulgarianWord, is_learned, trueIntroducedТimes));
+            list.add(new MyEntity(itemId, type, englishWord, bulgarianWord, is_learned, trueIntroducedТimes));
         }
         cursor.close();
+        return list;
+    }
+    public ArrayList<MyEntity> readDb(Context context, int IntroducedТimes, String wantedType){
+        ArrayList<MyEntity> list = new ArrayList<>();
+        FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(context);
+        SQLiteDatabase db1 = mDbHelper.getReadableDatabase();
+        String query = String.format("SELECT * FROM %s WHERE %s < %d AND %s = '%s'",
+                FeedReaderContract.FeedEntry.TABLE_NAME,
+                FeedReaderContract.FeedEntry.TRUE_INTRODUCTED_TIMES,
+                IntroducedТimes,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_TYPE,
+                wantedType);
+        Cursor cursor = db1.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+
+            //get value from DB
+            int itemId = cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID));
+            String type = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_TYPE));
+            String englishWord = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_ENGLISH));
+            String bulgarianWord = cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_BULGARIAN));
+            int is_learned = cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.IS_LEARNED));
+            int trueIntroducedТimes = cursor.getInt(cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.TRUE_INTRODUCTED_TIMES));
+
+            list.add(new MyEntity(itemId, type, englishWord, bulgarianWord, is_learned, trueIntroducedТimes));
+        }
+        cursor.close();
+        return list;
     }
 
 

@@ -7,4 +7,12 @@
         <item>phrase</item>
     </string-array>
 
+    <string-array name="spinner2Items">
+        <item>all</item>
+        <item>verb</item>
+        <item>adjective</item>
+        <item>noun</item>
+        <item>phrase</item>
+    </string-array>
+
 </resources>

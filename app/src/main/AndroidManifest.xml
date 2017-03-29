@@ -52,6 +52,7 @@
                 android:value="com.example.nasko.englishexercises.activities.MainActivity" />
         </activity>
         <activity android:name=".activities.PreferenceActivity" />
+        <activity android:name=".activities.PreExersciseActivity"></activity>
     </application>
 
 </manifest>

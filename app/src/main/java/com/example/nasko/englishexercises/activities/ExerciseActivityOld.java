@@ -19,13 +19,12 @@ import com.example.nasko.englishexercises.entries.UpdateTrueIntroductedTimes;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 /**
  * Created by Nasko on 27.3.2017 г..
  */
 
-public class ExerciseActivity extends Activity {
+public class ExerciseActivityOld extends Activity {
     int counter;
     TextView textViewEnglish;
     TextView textViewResult;
@@ -33,6 +32,7 @@ public class ExerciseActivity extends Activity {
     Button buttonNext;
     EditText editTextBulgarian;
     ArrayList<MyEntity> wrongWords;
+    ArrayList<MyEntity> list2;
     ArrayList<MyEntity> list1;
     ArrayList<MyEntity> list;
     ArrayList<MyEntity> currentWords;
@@ -49,27 +49,32 @@ public class ExerciseActivity extends Activity {
 
         wrongWords = new ArrayList<>();
         currentWords = new ArrayList<>();
+
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String intrSett = prefs.getString("introduced_times", "10");
         int introducedТimes = Integer.valueOf(intrSett);
 
         EntryListOld entryListOld = new EntryListOld();
+        entryListOld.readDb(getApplication(), introducedТimes);
+        list1 = EntryList.getAllDB(getApplication());
+
+        list2 = new ArrayList<>();
+
         if (type.equals("all")){
-            list1 = entryListOld.readDb(getApplication(), introducedТimes);
+            list2 = list1;
         }else {
-           list1 = entryListOld.readDb(getApplication(), introducedТimes, type);
+            for (MyEntity entity : list2) {
+                if (entity.getType().equals(type)){
+                    list2.add(entity);
+                }
+            }
         }
 
+        Collections.shuffle(list2);
 
-        Collections.shuffle(list1);
 
-        if (count > list1.size()){
-            count = list1.size();
-        }
-
-        list = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            list.add(list1.get(i));
+            list.add(list2.get(i));
         }
 
 
