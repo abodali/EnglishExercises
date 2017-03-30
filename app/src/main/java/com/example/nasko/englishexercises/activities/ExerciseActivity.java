@@ -54,7 +54,7 @@ public class ExerciseActivity extends Activity {
         int introducedТimes = Integer.valueOf(intrSett);
 
         EntryListOld entryListOld = new EntryListOld();
-        if (type.equals("all")){
+        if (type.equals("All")){
             list1 = entryListOld.readDb(getApplication(), introducedТimes);
         }else {
            list1 = entryListOld.readDb(getApplication(), introducedТimes, type);
