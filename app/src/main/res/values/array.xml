@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinnerItems">
-        <item>verb</item>
-        <item>adjective</item>
-        <item>noun</item>
-        <item>phrase</item>
+        <item>Adjective</item>
+        <item>Noun</item>
+        <item>Verb (Infinitive)</item>
+        <item>Verb (Simple Past)</item>
+        <item>Verb (Past Participle)</item>
+        <item>Phrase</item>
     </string-array>
 
     <string-array name="spinner2Items">
-        <item>all</item>
-        <item>verb</item>
-        <item>adjective</item>
-        <item>noun</item>
-        <item>phrase</item>
+        <item>All</item>
+        <item>Adjective</item>
+        <item>Noun</item>
+        <item>Verb (Infinitive)</item>
+        <item>Verb (Simple Past)</item>
+        <item>Verb (Past Participle)</item>
+        <item>Phrase</item>
     </string-array>
 
 </resources>

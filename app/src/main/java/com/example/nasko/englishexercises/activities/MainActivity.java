@@ -48,10 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, dataVisualizationActivity.class);
                 startActivity(intent2);
                 return true;
-//            case R.id.exercises:
-//                Intent intent3 = new Intent(this, ExerciseActivity.class);
-//                startActivity(intent3);
-//                return true;
             case R.id.settings:
                 Intent intent4 = new Intent(this, PreferenceActivity.class);
                 startActivity(intent4);

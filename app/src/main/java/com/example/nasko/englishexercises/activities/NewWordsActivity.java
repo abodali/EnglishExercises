@@ -66,10 +66,13 @@ public class NewWordsActivity extends Activity {
         final Button button = (Button) findViewById(R.id.buttonAdd);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!editTextEnglish.getText().equals("") || !editTextBulgarian.getText().equals("")) {
+                String englishWord = editTextEnglish.getText().toString().toLowerCase();
+                String bulgarianWord = editTextBulgarian.getText().toString().toLowerCase();
+
+                if (!englishWord.equals("") && !bulgarianWord.equals("")) {
                     setType((String) spinnerType.getSelectedItem());
-                    setEnglish(String.valueOf(editTextEnglish.getText()));
-                    setBulgarian(String.valueOf(editTextBulgarian.getText()));
+                    setEnglish(englishWord);
+                    setBulgarian(bulgarianWord);
 
                     final ContentValues values = new ContentValues();
                     values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TYPE, type);
@@ -84,7 +87,7 @@ public class NewWordsActivity extends Activity {
 
                 }else {
                     Context context = getApplicationContext();
-                    CharSequence text = "Hello toast!";
+                    CharSequence text = "wrong input!";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();

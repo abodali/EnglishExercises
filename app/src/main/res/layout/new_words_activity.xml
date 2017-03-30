@@ -8,7 +8,7 @@
 
     <Spinner
         android:id="@+id/spinnerType"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:entries="@array/spinnerItems"
@@ -18,7 +18,8 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -40,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="English" />
+            android:text="@string/english" />
 
         <EditText
             android:id="@+id/editTextEnglish"
@@ -68,11 +69,11 @@
         app:layout_constraintTop_toBottomOf="@+id/visualizationLayout">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Bulgarian" />
+            android:text="@string/bulgarian" />
 
         <EditText
             android:id="@+id/editTextBulgarian"
@@ -94,7 +95,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="add entry"
+        android:text="@string/add_entry"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />

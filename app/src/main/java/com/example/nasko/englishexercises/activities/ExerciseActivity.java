@@ -99,8 +99,6 @@ public class ExerciseActivity extends Activity {
                     editTextBulgarian.setText(null);
                 }
             });
-
-            //test
         }else {
             Context context = getApplicationContext();
             CharSequence text = "no words to learn";

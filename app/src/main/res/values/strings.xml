@@ -7,5 +7,14 @@
 
     <string name="pref_title_introduced_times">introduced times</string>
     <string name="pref_default_introduced_imes">10</string>
+    <string name="bulgarian">Bulgarian</string>
+    <string name="english">English</string>
+    <string name="add_entry">add entry</string>
+    <string name="id">ID</string>
+    <string name="select">select</string>
+    <string name="delete">delete</string>
+    <string name="types">Types</string>
+    <string name="start">start</string>
+    <string name="how_many_exerscises">How many exerscises</string>
 
 </resources>

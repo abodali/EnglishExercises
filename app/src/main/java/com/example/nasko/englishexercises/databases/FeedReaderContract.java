@@ -25,7 +25,8 @@ public final class FeedReaderContract {
                     FeedEntry.COLUMN_NAME_ENGLISH + " TEXT," +
                     FeedEntry.COLUMN_NAME_BULGARIAN + " TEXT," +
                     FeedEntry.IS_LEARNED + " INTEGER DEFAULT 0," +
-                    FeedEntry.TRUE_INTRODUCTED_TIMES + " INTEGER DEFAULT 0)";
+                    FeedEntry.TRUE_INTRODUCTED_TIMES + " INTEGER DEFAULT 0, unique("+FeedEntry.COLUMN_NAME_ENGLISH+","+FeedEntry.COLUMN_NAME_BULGARIAN+")" +
+                    " on conflict replace)";
 
     protected static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedEntry.TABLE_NAME;

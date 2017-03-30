@@ -2,7 +2,6 @@ package com.example.nasko.englishexercises.activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +27,7 @@ public class dataVisualizationActivity extends Activity {
     int selectedID;
     EditText IDEditText;
     Button selectBtn;
-    Button deletFromDbBtn;
+    Button deleteFromDbBtn;
     TextView allDbToText;
     TextView showEntityTextView;
     LinearLayout layout;
@@ -43,7 +42,7 @@ public class dataVisualizationActivity extends Activity {
         IDEditText = (EditText) findViewById(R.id.IDEditText);
         selectBtn = (Button) findViewById(R.id.selectBtn);
         showEntityTextView = (TextView) findViewById(R.id.showEntityTextView);
-        deletFromDbBtn = (Button) findViewById(R.id.deletFromDbBtn);
+        deleteFromDbBtn = (Button) findViewById(R.id.deletFromDbBtn);
         layout = (LinearLayout) findViewById(R.id.SelectLinearLayout);
         layout.setVisibility(View.GONE);
         String s = "";
@@ -95,7 +94,7 @@ public class dataVisualizationActivity extends Activity {
             }
         });
 
-        deletFromDbBtn.setOnClickListener(new View.OnClickListener() {
+        deleteFromDbBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(getApplication());
                 SQLiteDatabase db1 = mDbHelper.getReadableDatabase();

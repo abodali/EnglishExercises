@@ -12,18 +12,19 @@
 
         <EditText
             android:id="@+id/IDEditText"
-            android:layout_width="93dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="ID"
+            android:hint="@string/id"
             android:inputType="number" />
 
         <Button
             android:id="@+id/selectBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.28"
-            android:text="select" />
+            android:layout_weight="0.02"
+            android:text="@string/select" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -34,17 +35,16 @@
 
         <TextView
             android:id="@+id/showEntityTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="TextView" />
 
         <Button
             android:id="@+id/deletFromDbBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="delete" />
+            android:text="@string/delete" />
+
     </LinearLayout>
 
     <TextView
@@ -52,6 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

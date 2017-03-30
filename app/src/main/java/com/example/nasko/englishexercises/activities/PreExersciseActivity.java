@@ -3,6 +3,9 @@ package com.example.nasko.englishexercises.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,5 +52,34 @@ public class PreExersciseActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.add:
+                Intent intent = new Intent(this, NewWordsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.see:
+                Intent intent2 = new Intent(this, dataVisualizationActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.settings:
+                Intent intent4 = new Intent(this, PreferenceActivity.class);
+                startActivity(intent4);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
