@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nasko.englishexercises">
+    package="com.example.nasko.vocebularyExercises">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.example.nasko.vocebularyExercises.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,42 +17,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.NewWordsActivity"
-            android:parentActivityName=".activities.MainActivity">
+            android:name="com.example.nasko.vocebularyExercises.activities.NewWordsActivity"
+            android:parentActivityName="com.example.nasko.vocebularyExercises.activities.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.nasko.vocebularyExercises.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.dataVisualizationActivity"
-            android:parentActivityName=".activities.MainActivity">
+            android:name="com.example.nasko.vocebularyExercises.activities.dataVisualizationActivity"
+            android:parentActivityName="com.example.nasko.vocebularyExercises.activities.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.nasko.vocebularyExercises.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.ExerciseActivity"
-            android:parentActivityName=".activities.MainActivity">
+            android:name="com.example.nasko.vocebularyExercises.activities.ExerciseActivity"
+            android:parentActivityName="com.example.nasko.vocebularyExercises.activities.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.example.nasko.vocebularyExercises.activities.MainActivity" />
         </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.nasko.englishexercises.activities.MainActivity" />
-        </activity>
-        <activity android:name=".activities.PreferenceActivity" />
-        <activity android:name=".activities.PreExersciseActivity"></activity>
+
+        <activity android:name="com.example.nasko.vocebularyExercises.activities.PreferenceActivity" />
+        <activity android:name="com.example.nasko.vocebularyExercises.activities.PreExersciseActivity"></activity>
     </application>
 
 </manifest>

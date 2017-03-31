@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinnerItems">
+        <item>Adverb</item>
         <item>Adjective</item>
         <item>Noun</item>
         <item>Verb (Infinitive)</item>
@@ -11,6 +12,7 @@
 
     <string-array name="spinner2Items">
         <item>All</item>
+        <item>Adverb</item>
         <item>Adjective</item>
         <item>Noun</item>
         <item>Verb (Infinitive)</item>
