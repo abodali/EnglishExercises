@@ -120,7 +120,7 @@ public class PreExersciseActivity extends AppCompatActivity {
         mapOfTypesCounter.clear();
         for (MyEntity entity : myEntityList) {
             if (!mapOfTypesCounter.containsKey(entity.getType())){
-                mapOfTypesCounter.put(entity.getType(), 0);
+                mapOfTypesCounter.put(entity.getType(), 1);
             }else {
                 int count = mapOfTypesCounter.get(entity.getType());
                 count++;
