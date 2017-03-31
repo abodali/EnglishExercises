@@ -4,6 +4,6 @@
         android:inputType="number"
         android:key="introduced_times"
         android:title="@string/pref_title_introduced_times"
-        android:defaultValue="@string/pref_default_introduced_imes"
+        android:defaultValue="@string/pref_default_introduced_times"
         />
 </PreferenceScreen>

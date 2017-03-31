@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,11 +89,13 @@ public class ExerciseActivity extends Activity {
 
             buttonNext.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    String entredWord = String.valueOf(editTextBulgarian.getText());
+                    String entredWord = editTextBulgarian.getText().toString().toLowerCase();
                     if (!(entredWord.equals(list.get(counter).getEngWord()))) {
                         wrongWords.add(list.get(counter));
+                        showToast("Wrong answer");
                     } else {
                         currentWords.add(list.get(counter));
+                        showToast("correct answer");
                     }
 
                     next();
@@ -100,15 +103,21 @@ public class ExerciseActivity extends Activity {
                 }
             });
         }else {
-            Context context = getApplicationContext();
-            CharSequence text = "no words to learn";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            showToast("no words to learn");
             onBackPressed();
         }
 
 
+    }
+
+    private void showToast(String text){
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, text, duration);
+        View view = toast.getView();
+        view.setBackgroundResource(R.color.colorAccent);
+        toast.setGravity(Gravity.CENTER| Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
     }
 
     final private void next(){

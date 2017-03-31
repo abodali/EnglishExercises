@@ -58,7 +58,6 @@ public class dataVisualizationActivity extends Activity {
 
         selectBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int ir = 10;
                 String input = IDEditText.getText().toString();
                 if (!input.matches("")){
                     selectedID = Integer.valueOf(input);
@@ -70,23 +69,19 @@ public class dataVisualizationActivity extends Activity {
                             layout.setVisibility(View.VISIBLE);
                         }
                     }
-
                     if (entity == null){
                         Context context = getApplicationContext();
                         CharSequence text = "Nonexistent ID";
                         int duration = Toast.LENGTH_LONG;
-
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                         finish();
                         startActivity(getIntent());
                     }
-
                 }else {
                     Context context = getApplicationContext();
                     CharSequence text = "Please input ID";
                     int duration = Toast.LENGTH_LONG;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
 
@@ -98,19 +93,10 @@ public class dataVisualizationActivity extends Activity {
             public void onClick(View v) {
                 FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(getApplication());
                 SQLiteDatabase db1 = mDbHelper.getReadableDatabase();
-
-                //String delete = String.format("DELETE FROM %s WHERE _ID = %d", FeedReaderContract.FeedEntry.TABLE_NAME, selectedID + 1);
-                //Cursor cursor = db1.rawQuery(delete, null);
-                //cursor.close();
                 db1.delete(FeedReaderContract.FeedEntry.TABLE_NAME, FeedReaderContract.FeedEntry._ID + "=" + entity.getId(), null);
-
-
                 finish();
                 startActivity(getIntent());
             }
         });
-
     }
-
-
 }
